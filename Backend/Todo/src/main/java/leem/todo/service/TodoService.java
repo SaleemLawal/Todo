@@ -1,10 +1,10 @@
-package leem.Todo.service;
+package leem.todo.service;
 
 import jakarta.transaction.Transactional;
-import leem.Todo.ENUMS.Priority;
-import leem.Todo.ENUMS.Status;
-import leem.Todo.model.Todo;
-import leem.Todo.repository.TodoRepo;
+import leem.todo.ENUMS.Priority;
+import leem.todo.ENUMS.Status;
+import leem.todo.model.Todo;
+import leem.todo.repository.TodoRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

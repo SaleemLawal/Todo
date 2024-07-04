@@ -1,4 +1,4 @@
-package leem.Todo.ENUMS;
+package leem.todo.ENUMS;
 
 public enum Status {
     PENDING,

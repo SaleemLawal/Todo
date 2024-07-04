@@ -1,6 +1,5 @@
-package leem.Todo.config;
+package leem.todo.config;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

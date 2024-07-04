@@ -1,9 +1,9 @@
-package leem.Todo.controller;
+package leem.todo.controller;
 
-import leem.Todo.ENUMS.Priority;
-import leem.Todo.ENUMS.Status;
-import leem.Todo.model.Todo;
-import leem.Todo.service.TodoService;
+import leem.todo.ENUMS.Priority;
+import leem.todo.ENUMS.Status;
+import leem.todo.model.Todo;
+import leem.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +33,13 @@ public class TodoController {
         return ResponseEntity.ok().body(todoService.getTodoById(id));
     }
 
-    @GetMapping("/status")
-    public ResponseEntity<List<Todo>> getTodosByStatus(@RequestParam(value = "status")Status status) {
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Todo>> getTodosByStatus(@PathVariable(value = "status") Status status) {
         return ResponseEntity.ok().body(todoService.getTodosByStatus(status));
     }
 
-    @GetMapping("/priority")
-    public ResponseEntity<List<Todo>> getTodosByPriority(@RequestParam(value = "priority") Priority priority) {
+    @GetMapping("/priority/{priority}")
+    public ResponseEntity<List<Todo>> getTodosByPriority(@PathVariable(value = "priority") Priority priority) {
         return ResponseEntity.ok().body(todoService.getTodosByPriority(priority));
     }
 
@@ -55,8 +55,8 @@ public class TodoController {
         return ResponseEntity.ok().body(todoService.getOverdueTodos(today));
     }
 
-    @GetMapping("/tag")
-    public ResponseEntity<List<Todo>> getTodosByTag(@RequestParam(value = "tag") String tag) {
+    @GetMapping("/tag/{tag}")
+    public ResponseEntity<List<Todo>> getTodosByTag(@PathVariable(value = "tag") String tag) {
         return ResponseEntity.ok().body(todoService.getTodosByTag(tag));
     }
 
@@ -69,5 +69,4 @@ public class TodoController {
     public ResponseEntity<Todo> updateTodo(@RequestBody Todo todo) {
         return ResponseEntity.ok().body(todoService.updateTodoById(todo.getId(), todo));
     }
-
 }

@@ -1,8 +1,8 @@
-package leem.Todo.model;
+package leem.todo.model;
 
 import jakarta.persistence.*;
-import leem.Todo.ENUMS.Priority;
-import leem.Todo.ENUMS.Status;
+import leem.todo.ENUMS.Priority;
+import leem.todo.ENUMS.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,8 +1,8 @@
-package leem.Todo.repository;
+package leem.todo.repository;
 
-import leem.Todo.ENUMS.Priority;
-import leem.Todo.ENUMS.Status;
-import leem.Todo.model.Todo;
+import leem.todo.ENUMS.Priority;
+import leem.todo.ENUMS.Status;
+import leem.todo.model.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
