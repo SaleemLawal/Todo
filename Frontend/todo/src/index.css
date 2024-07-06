@@ -96,19 +96,20 @@ dialog[open] {
   cursor: pointer;
 }
 
-input, select, textarea{
+input,
+select,
+textarea {
   border: 1px solid rgb(222, 221, 221);
   border-radius: 4px;
 }
 
-input:focus{
-  outline:none;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
   border: 1px solid black;
 }
 
-.input--element{
-  padding-left: 0.5rem ;
-  padding-right: 0.5rem ;
-  width: 100%;
+.input--element {
   margin-bottom: 1.5rem;
 }
