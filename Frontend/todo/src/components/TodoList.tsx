@@ -24,15 +24,15 @@ const TodoList: React.FC<Props> = ({ toggleModal }) => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-6">Todos</h1>
+      <h1 className="mb-6 text-4xl font-bold">Todos</h1>
       {!todos && <h1>No todo element</h1>}
       {todos &&
         todos.map((todo, index) => {
           return <TodoElement key={index} data={todo} />;
         })}
       <button className="mt-3" onClick={() => toggleModal(true)}>
-        <i className="bi bi-plus-square-fill text-gray-500 text-xl"></i>
-        <span className=" ml-2">Add Todo</span>
+        <i className="text-xl text-gray-500 bi bi-plus-square-fill"></i>
+        <span className="ml-2 ">Add Todo</span>
       </button>
     </div>
   );
