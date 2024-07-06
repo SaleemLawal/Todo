@@ -6,7 +6,7 @@ import leem.todo.ENUMS.Status;
 import leem.todo.model.Todo;
 import leem.todo.repository.TodoRepo;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
+// @Slf4j
 @Transactional(rollbackOn = Exception.class)
 @RequiredArgsConstructor
 public class TodoService {
