@@ -10,3 +10,15 @@ export async function saveTodo(todo: TodoData) {
 export async function getTodos() {
   return await axios.get(BASE_PATH);
 }
+
+export async function getTodoById(id: string) {
+  return await axios.get(`${BASE_PATH}/${id}`)
+}
+
+export async function deleteTodoById(id: number){
+  return await axios.delete(BASE_PATH, {
+    params: {
+      id: id
+    }
+  })
+}
