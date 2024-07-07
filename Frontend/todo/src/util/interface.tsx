@@ -8,3 +8,8 @@ export interface TodoData {
   tags: string[];
   completed: boolean;
 }
+
+export interface ApiContextType {
+  getAllTodos: () => Promise<TodoData[]>;
+  upcomingTodos: () => Promise<TodoData[]>;
+}
