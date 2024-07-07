@@ -14,31 +14,35 @@ const TodoDetail: React.FC = () => {
     dueDate: "",
     tags: [],
     completed: false,
-  })
+  });
 
   const getTodo = useCallback(async () => {
-    if (id){
+    if (id) {
       try {
-        const {data} = await getTodoById(id)
-        const formattedDate = data.dueDate ? new Date(data.dueDate).toISOString().split('T')[0] : "";
+        const { data } = await getTodoById(id);
+        const formattedDate = data.dueDate
+          ? new Date(data.dueDate).toISOString().split("T")[0]
+          : "";
         setTodo({
-          ...data, dueDate: formattedDate
-        })
+          ...data,
+          dueDate: formattedDate,
+        });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-  }, [id])
-  
+  }, [id]);
+
   useEffect(() => {
-    getTodo()
+    getTodo();
   }, [getTodo]);
-  
+
   return (
-    
     <>
-      <p className="mb-6 text-4xl font-bold">{id ? `Edit Todo (${id})` : "Add Todo"}</p>
-      <AddTodoModal data = {todo}/>
+      <p className="mb-6 text-4xl font-bold">
+        {id ? `Edit Todo (${id})` : "Add Todo"}
+      </p>
+      <AddTodoModal data={todo} />
     </>
   );
 };
