@@ -68,15 +68,21 @@ public class TodoService {
         return "Deleted Todo with id" + id;
     }
     public List<Todo> getTodosByPriority(Priority priority){
-        return todoRepo.findByPriority(priority);
+        return todoRepo.findByPriority(priority).stream()
+                .sorted(Comparator.comparing(Todo::getPriority))
+                .collect(Collectors.toList()).reversed();
     }
 
     public List<Todo> findNonExpiredTodos(LocalDateTime date){
-            return todoRepo.findNonExpiredTodos(date);
+            return todoRepo.findNonExpiredTodos(date).stream()
+                    .sorted(Comparator.comparing(Todo::getPriority))
+                    .collect(Collectors.toList()).reversed();
     }
 
     public List<Todo> getOverdueTodos(LocalDateTime date){
-            return todoRepo.getOverdueTodos(date);
+            return todoRepo.getOverdueTodos(date).stream()
+                    .sorted(Comparator.comparing(Todo::getPriority))
+                    .collect(Collectors.toList()).reversed();
     }
 
     public List<Todo> getTodosByTag(String tag) {
