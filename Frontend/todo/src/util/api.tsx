@@ -12,13 +12,17 @@ export async function getTodos() {
 }
 
 export async function getTodoById(id: string) {
-  return await axios.get(`${BASE_PATH}/${id}`)
+  return await axios.get(`${BASE_PATH}/${id}`);
 }
 
-export async function deleteTodoById(id: number){
+export async function deleteTodoById(id: number) {
   return await axios.delete(BASE_PATH, {
     params: {
-      id: id
-    }
-  })
+      id: id,
+    },
+  });
+}
+
+export async function getUpcomingTodos() {
+  return await axios.get(`${BASE_PATH}/non-expired`);
 }
