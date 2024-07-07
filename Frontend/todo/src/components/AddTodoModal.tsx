@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { TodoData } from "../util/interface";
 import { saveTodo, deleteTodoById } from "../util/api";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-interface Props{
-  data? : TodoData
-  toggleModal? : (show: boolean) => void;
+interface Props {
+  data?: TodoData;
+  toggleModal?: (show: boolean) => void;
 }
-const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
+const AddTodoModal: React.FC<Props> = ({ data, toggleModal = () => {} }) => {
   const navigate = useNavigate();
 
   const [todoItem, setTodoItem] = useState<TodoData>({
@@ -25,7 +25,7 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
       setTodoItem(data);
     }
   }, [data]);
-  
+
   const [newTag, setNewTag] = useState<string>("");
 
   const handleChange = (
@@ -66,24 +66,24 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
     };
     setTodoItem(updatedTodoItem);
     await saveTodo(updatedTodoItem);
-    if (toggleModal){
-      toggleModal(false)
-    }
-    navigate("/todos")
+    navigate("/todos");
+    toggleModal(false);
   };
 
   const handleDelete = async () => {
-    if(data && data.id){
-      await deleteTodoById(data.id)
-      navigate("/todos")
+    if (data && data.id) {
+      await deleteTodoById(data.id);
+      navigate("/todos");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl p-4">
       <div className="flex flex-wrap -mx-2">
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Name</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Name
+          </label>
           <input
             type="text"
             onChange={handleChange}
@@ -94,7 +94,9 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           />
         </div>
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Status</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Status
+          </label>
           <select
             name="status"
             onChange={handleChange}
@@ -106,7 +108,9 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           </select>
         </div>
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Priority</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Priority
+          </label>
           <select
             name="priority"
             onChange={handleChange}
@@ -119,7 +123,9 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           </select>
         </div>
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Due Date</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Due Date
+          </label>
           <input
             type="date"
             onChange={handleChange}
@@ -130,7 +136,9 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           />
         </div>
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Description</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
           <textarea
             onChange={handleChange}
             value={todoItem.description}
@@ -140,7 +148,9 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           ></textarea>
         </div>
         <div className="w-full px-2 mb-6 md:w-1/2">
-          <label className="block text-sm font-medium text-gray-700">Tags</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Tags
+          </label>
           <div className="flex items-center">
             <input
               type="text"
@@ -155,7 +165,12 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
           </div>
           <div className="mt-2">
             {todoItem.tags.map((tag, index) => (
-              <span key={tag} className={`inline-block p-1 bg-gray-200 rounded mr-2 ${index !== 0 ? 'ml-2' : ''}`}>
+              <span
+                key={tag}
+                className={`inline-block p-1 bg-gray-200 rounded mr-2 ${
+                  index !== 0 ? "ml-2" : ""
+                }`}
+              >
                 {tag}{" "}
                 <button type="button" onClick={() => handleRemoveTag(tag)}>
                   <i className="text-red-400 bi bi-x-circle-fill"></i>
@@ -179,7 +194,6 @@ const AddTodoModal: React.FC<Props> = ({data, toggleModal = () => {}}) => {
       </div>
     </form>
   );
-  
 };
 
 export default AddTodoModal;
