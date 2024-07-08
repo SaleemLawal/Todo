@@ -30,3 +30,7 @@ export async function getUpcomingTodos() {
 export async function getDueTodos() {
   return await axios.get(`${BASE_PATH}/overdue`);
 }
+
+export async function getTodoByTag(tag: string) {
+  return await axios.get(`${BASE_PATH}/tag/${tag}`);
+}
