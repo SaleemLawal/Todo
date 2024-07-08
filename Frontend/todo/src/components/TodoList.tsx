@@ -21,6 +21,8 @@ const TodoList: React.FC<Props> = ({ toggleModal, dataType }) => {
         data = await apiContext.getAllTodos();
       } else if (dataType === "upcoming") {
         data = await apiContext.upcomingTodos();
+      }else if (dataType === "due"){
+        data = await apiContext.dueTodos();
       }
       setTodos(data);
     };
@@ -32,6 +34,8 @@ const TodoList: React.FC<Props> = ({ toggleModal, dataType }) => {
     headerElement = <h1 className="mb-6 text-4xl font-bold">Todos</h1>;
   } else if (dataType === "upcoming") {
     headerElement = <h1 className="mb-6 text-4xl font-bold">Upcoming</h1>;
+  } else if (dataType === "due"){
+    headerElement = <h1 className="mb-6 text-4xl font-bold">Due</h1>;
   }
 
   return (
@@ -40,7 +44,7 @@ const TodoList: React.FC<Props> = ({ toggleModal, dataType }) => {
       {!todos.length && <h1>No todo element</h1>}
       {todos.length > 0 &&
         todos.map((todo, index) => {
-          return <TodoElement key={index} data={todo} />;
+          return (!todo.completed && <TodoElement key={index} data={todo} />) ;
         })}
       {dataType === "all" && (
         <button className="mt-3" onClick={() => toggleModal(true)}>

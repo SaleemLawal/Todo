@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import AddTodoModal from "./components/AddTodoModal";
 import { createContext, useRef, useState } from "react";
 import TodoDetail from "./components/TodoDetail";
-import { getTodos, getUpcomingTodos } from "./util/api";
+import { getDueTodos, getTodos, getUpcomingTodos } from "./util/api";
 import { ApiContextType } from "./util/interface";
 
 export const ApiContext = createContext<ApiContextType | null>(null);
@@ -38,8 +38,18 @@ const App = () => {
     }
   };
 
+  const dueTodos = async () => {
+    try {
+      const { data } = await getDueTodos();
+      return data;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }
+
   return (
-    <ApiContext.Provider value={{ getAllTodos, upcomingTodos }}>
+    <ApiContext.Provider value={{ getAllTodos, upcomingTodos, dueTodos }}>
       <section id="main-page">
         <BrowserRouter>
           <NavBar />
@@ -60,7 +70,9 @@ const App = () => {
               />
               <Route
                 path="/todos/due"
-                element={<h1 className="mb-6 text-4xl font-bold">Due</h1>}
+                element={
+                  <TodoList toggleModal={toggleModal} dataType="due" />
+                }
               />
               <Route
                 path="/todos/upcoming"
