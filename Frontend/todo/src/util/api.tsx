@@ -26,3 +26,7 @@ export async function deleteTodoById(id: number) {
 export async function getUpcomingTodos() {
   return await axios.get(`${BASE_PATH}/non-expired`);
 }
+
+export async function getDueTodos() {
+  return await axios.get(`${BASE_PATH}/overdue`);
+}

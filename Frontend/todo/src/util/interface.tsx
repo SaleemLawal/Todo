@@ -12,4 +12,5 @@ export interface TodoData {
 export interface ApiContextType {
   getAllTodos: () => Promise<TodoData[]>;
   upcomingTodos: () => Promise<TodoData[]>;
+  dueTodos: () => Promise<TodoData[]>;
 }
