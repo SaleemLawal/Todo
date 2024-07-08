@@ -6,6 +6,7 @@ import { createContext, useRef, useState } from "react";
 import TodoDetail from "./components/TodoDetail";
 import { getDueTodos, getTodos, getUpcomingTodos } from "./util/api";
 import { ApiContextType } from "./util/interface";
+import SearchTags from "./components/SearchTags";
 
 export const ApiContext = createContext<ApiContextType | null>(null);
 
@@ -46,7 +47,7 @@ const App = () => {
       console.log(error);
       return [];
     }
-  }
+  };
 
   return (
     <ApiContext.Provider value={{ getAllTodos, upcomingTodos, dueTodos }}>
@@ -70,9 +71,7 @@ const App = () => {
               />
               <Route
                 path="/todos/due"
-                element={
-                  <TodoList toggleModal={toggleModal} dataType="due" />
-                }
+                element={<TodoList toggleModal={toggleModal} dataType="due" />}
               />
               <Route
                 path="/todos/upcoming"
@@ -80,10 +79,7 @@ const App = () => {
                   <TodoList toggleModal={toggleModal} dataType="upcoming" />
                 }
               />
-              <Route
-                path="/todos/tags"
-                element={<h1 className="mb-6 text-4xl font-bold">Tags</h1>}
-              />
+              <Route path="/todos/tags" element={<SearchTags />} />
             </Routes>
           </main>
 
